@@ -1,0 +1,26 @@
+{
+    "name": "seobrain/laraparser",
+    "description": "Laravel connector for A-Parser API",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitry Gubanov",
+            "email": "houliganster@gmail.com"
+        }
+    ],
+    "require": {
+        "laravel/laravel": ">=7.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Seobrain\\Laraparser\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Seobrain\\Laraparser\\LaraparserServiceProvider"
+            ]
+        }
+    }
+}
