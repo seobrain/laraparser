@@ -1,6 +1,7 @@
 {
     "name": "seobrain/laraparser",
     "description": "Laravel connector for A-Parser API",
+    "version": "0.1.2",
     "license": "MIT",
     "authors": [
         {
