@@ -9,8 +9,8 @@
         }
     ],
     "require": {
-        "php": ">=7.4",
-        "illuminate/support": ">=6"
+        "php": "^7.4",
+        "laravel/framework": ">=7"
     },
     "autoload": {
         "psr-4": {
