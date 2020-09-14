@@ -5,6 +5,10 @@ namespace Seobrain\Laraparser;
 use Exception;
 use Illuminate\Support\Facades\Http;
 
+/**
+ * Class Laraparser
+ * @package Seobrain\Laraparser
+ */
 class Laraparser
 {
     /**
@@ -23,8 +27,8 @@ class Laraparser
      */
     public function __construct(string $host = '', string $password = '')
     {
-        $this->host = $host ?: config('aparser.host'); // $host;
-        $this->password = $password ?: config('aparser.password'); // $password;
+        $this->host = $host ?: config('aparser.host');
+        $this->password = $password ?: config('aparser.password');
     }
 
     /**

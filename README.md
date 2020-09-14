@@ -35,6 +35,9 @@ php artisan config:cache
 
 ```php
 // Initialize $aparser class
+$aparser = new Seobrain\Laraparser\Laraparser();
+
+// Optionally you can specify credentials during initialization:
 $aparser = new Seobrain\Laraparser\Laraparser(config('laraparser.host'), config('laraparser.password'));
 
 // Make a request
