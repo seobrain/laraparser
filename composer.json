@@ -9,7 +9,9 @@
         }
     ],
     "require": {
-        "laravel/laravel": ">=7.0.0"
+        "php": ">=7.4",
+        "illuminate/support": ">=6",
+        "laravel/laravel": ">=7"
     },
     "autoload": {
         "psr-4": {
@@ -22,5 +24,7 @@
                 "Seobrain\\Laraparser\\LaraparserServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
