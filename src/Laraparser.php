@@ -344,7 +344,7 @@ class Laraparser
             'data' => $data
         ];
 
-        $response = Http::post($this->host, $request);//->throw();
+        $response = Http::post($this->host, $request)->throw();
         if ($response->successful() && @$response->json()['success']) {
             return @$response->json()['data'] ?: true;
         } else {
