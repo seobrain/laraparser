@@ -22,13 +22,20 @@ class Laraparser
     private string $password;
 
     /**
+     * @var int $timeout Default timeout for basic operations: ping|info
+     */
+    private int $timeout;
+
+    /**
      * @param string $host
      * @param string $password
+     * @param int $timeout
      */
-    public function __construct(string $host = '', string $password = '')
+    public function __construct(string $host = '', string $password = '', int $timeout = 5)
     {
         $this->host = $host ?: config('aparser.host');
         $this->password = $password ?: config('aparser.password');
+        $this->timeout = $timeout;
     }
 
     /**
@@ -39,7 +46,7 @@ class Laraparser
      */
     public function ping()
     {
-        return $this->apiCall('ping');
+        return $this->apiCall('ping', [], $this->timeout);
     }
 
     /**
@@ -50,7 +57,7 @@ class Laraparser
      */
     public function info()
     {
-        return $this->apiCall('info');
+        return $this->apiCall('info', [], $this->timeout);
     }
 
     /**
@@ -333,10 +340,12 @@ class Laraparser
      *
      * @param string $action
      * @param array $data
+     * @param numeric $timeout
      * @return mixed
+     * @throws \Illuminate\Http\Client\RequestException
      * @throws Exception
      */
-    private function apiCall(string $action, array $data = [])
+    private function apiCall(string $action, array $data = [], $timeout = 0)
     {
         $request = [
             'action' => $action,
@@ -344,7 +353,7 @@ class Laraparser
             'data' => $data
         ];
 
-        $response = Http::post($this->host, $request)->throw();
+        $response = Http::timeout($timeout)->post($this->host, $request)->throw();
         if ($response->successful() && @$response->json()['success']) {
             return @$response->json()['data'] ?: true;
         } else {
