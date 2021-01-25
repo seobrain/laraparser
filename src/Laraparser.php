@@ -3,6 +3,7 @@
 namespace Seobrain\Laraparser;
 
 use Exception;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
 
 /**
@@ -342,7 +343,7 @@ class Laraparser
      * @param array $data
      * @param numeric $timeout
      * @return mixed
-     * @throws \Illuminate\Http\Client\RequestException
+     * @throws RequestException
      * @throws Exception
      */
     private function apiCall(string $action, array $data = [], $timeout = 0)
