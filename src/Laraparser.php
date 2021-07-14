@@ -42,10 +42,10 @@ class Laraparser
     /**
      * Check of work the server
      *
-     * @return string
+     * @return mixed
      * @throws Exception
      */
-    public function ping()
+    public function ping(): mixed
     {
         return $this->apiCall('ping', [], $this->timeout);
     }
@@ -53,10 +53,10 @@ class Laraparser
     /**
      * General information and list of all available parsers
      *
-     * @return array
+     * @return mixed
      * @throws Exception
      */
-    public function info()
+    public function info(): mixed
     {
         return $this->apiCall('info', [], $this->timeout);
     }
@@ -71,10 +71,10 @@ class Laraparser
      * @param string $preset
      * @param int $rawResults
      * @param array $options
-     * @return array
+     * @return mixed
      * @throws Exception
      */
-    public function oneRequest(string $query, string $parser, $preset = 'default', $rawResults = 0, $options = [])
+    public function oneRequest(string $query, string $parser, $preset = 'default', $rawResults = 0, $options = []): mixed
     {
         return $this->apiCall('oneRequest', [
             'query' => $query,
@@ -97,10 +97,10 @@ class Laraparser
      * @param int $threads
      * @param int $rawResults
      * @param array $options
-     * @return array
+     * @return mixed
      * @throws Exception
      */
-    public function bulkRequest(array $queries, string $parser, $preset = 'default', $threads = 5, $rawResults = 0, $options = [])
+    public function bulkRequest(array $queries, string $parser, $preset = 'default', $threads = 5, $rawResults = 0, $options = []): mixed
     {
         return $this->apiCall('bulkRequest', [
             'queries' => $queries,
@@ -117,10 +117,10 @@ class Laraparser
      *
      * @param $parser
      * @param string $preset
-     * @return array
+     * @return mixed
      * @throws Exception
      */
-    public function getParserPreset($parser, $preset = 'default')
+    public function getParserPreset($parser, $preset = 'default'): mixed
     {
         return $this->apiCall('getParserPreset', [
             'parser' => $parser,
@@ -131,10 +131,10 @@ class Laraparser
     /**
      * Request of list live proxy. Returns a list of alive proxy from all checkers.
      *
-     * @return array
+     * @return mixed
      * @throws Exception
      */
-    public function getProxies()
+    public function getProxies(): mixed
     {
         return $this->apiCall('getProxies');
     }
@@ -147,10 +147,10 @@ class Laraparser
      * @param string $taskPreset
      * @param array $queries
      * @param array $options
-     * @return string taskUid
+     * @return mixed
      * @throws Exception
      */
-    public function addTask($configPreset = 'default', $taskPreset = 'default', $queries = [], $options = [])
+    public function addTask($configPreset = 'default', $taskPreset = 'default', $queries = [], $options = []): mixed
     {
         $defaults = [
             'preset' => $taskPreset,
@@ -194,10 +194,10 @@ class Laraparser
      * Receiving a status of task on its id
      *
      * @param int $taskUid
-     * @return array
+     * @return mixed
      * @throws Exception
      */
-    public function getTaskState(int $taskUid)
+    public function getTaskState(int $taskUid): mixed
     {
         return $this->apiCall('getTaskState', [
             'taskUid' => $taskUid
@@ -208,10 +208,10 @@ class Laraparser
      * Receiving a configuration of task on its id
      *
      * @param int $taskUid
-     * @return array
+     * @return mixed
      * @throws Exception
      */
-    public function getTaskConf(int $taskUid)
+    public function getTaskConf(int $taskUid): mixed
     {
         return $this->apiCall('getTaskConf', [
             'taskUid' => $taskUid
@@ -222,10 +222,10 @@ class Laraparser
      * Obtaining the link for downloading of result on task id
      *
      * @param int $taskUid
-     * @return array
+     * @return mixed
      * @throws Exception
      */
-    public function getTaskResultsFile(int $taskUid)
+    public function getTaskResultsFile(int $taskUid): mixed
     {
         return $this->apiCall('getTaskResultsFile', [
             'taskUid' => $taskUid
@@ -239,7 +239,7 @@ class Laraparser
      * @return mixed
      * @throws Exception
      */
-    public function deleteTaskResultsFile(int $taskUid)
+    public function deleteTaskResultsFile(int $taskUid): mixed
     {
         return $this->apiCall('deleteTaskResultsFile', [
             'taskUid' => $taskUid
@@ -253,10 +253,10 @@ class Laraparser
      *
      * @param int $taskUid
      * @param string $toStatus starting|pausing|stopping|deleting
-     * @return array
+     * @return mixed
      * @throws Exception
      */
-    public function changeTaskStatus(int $taskUid, string $toStatus)
+    public function changeTaskStatus(int $taskUid, string $toStatus): mixed
     {
         return $this->apiCall('changeTaskStatus', [
             'taskUid' => $taskUid,
@@ -271,10 +271,10 @@ class Laraparser
      *
      * @param int $taskUid
      * @param string $direction start|end|up|down
-     * @return array
+     * @return mixed
      * @throws Exception
      */
-    public function moveTask(int $taskUid, string $direction)
+    public function moveTask(int $taskUid, string $direction): mixed
     {
         return $this->apiCall('moveTask', [
             'taskUid' => $taskUid,
@@ -290,7 +290,7 @@ class Laraparser
      * @return mixed
      * @throws Exception
      */
-    public function getTasksList($completed = 0)
+    public function getTasksList($completed = 0): mixed
     {
         return $this->apiCall('getTasksList', [
             'completed' => $completed
@@ -301,10 +301,10 @@ class Laraparser
      * Displays a list of all available results that can return the specified parser.
      *
      * @param string $parser
-     * @return array
+     * @return mixed
      * @throws Exception
      */
-    public function getParserInfo(string $parser)
+    public function getParserInfo(string $parser): mixed
     {
         return $this->apiCall('getParserInfo', [
             'parser' => $parser
@@ -320,7 +320,7 @@ class Laraparser
      * @return mixed
      * @throws Exception
      */
-    public function update()
+    public function update(): mixed
     {
         return $this->apiCall('update');
     }
@@ -331,7 +331,7 @@ class Laraparser
      * @return mixed
      * @throws Exception
      */
-    public function getAccountsCount()
+    public function getAccountsCount(): mixed
     {
         return $this->apiCall('getAccountsCount');
     }
@@ -346,7 +346,7 @@ class Laraparser
      * @throws RequestException
      * @throws Exception
      */
-    private function apiCall(string $action, array $data = [], $timeout = 0)
+    private function apiCall(string $action, array $data = [], $timeout = 0): mixed
     {
         $request = [
             'action' => $action,
