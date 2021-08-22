@@ -341,12 +341,12 @@ class Laraparser
      *
      * @param string $action
      * @param array $data
-     * @param numeric $timeout
+     * @param int $timeout
      * @return mixed
      * @throws RequestException
      * @throws Exception
      */
-    private function apiCall(string $action, array $data = [], $timeout = 0): mixed
+    private function apiCall(string $action, array $data = [], int $timeout = 0): mixed
     {
         $request = [
             'action' => $action,
