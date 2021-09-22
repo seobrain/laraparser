@@ -23,7 +23,7 @@ class Laraparser
     private string $password;
 
     /**
-     * @var int $timeout Default timeout for basic operations: ping|info
+     * @var int $timeout Default timeout
      */
     private int $timeout;
 
@@ -32,7 +32,7 @@ class Laraparser
      * @param string $password
      * @param int $timeout
      */
-    public function __construct(string $host = '', string $password = '', int $timeout = 5)
+    public function __construct(string $host = '', string $password = '', int $timeout = 30)
     {
         $this->host = $host ?: config('aparser.host');
         $this->password = $password ?: config('aparser.password');
@@ -341,12 +341,11 @@ class Laraparser
      *
      * @param string $action
      * @param array $data
-     * @param int $timeout
      * @return mixed
      * @throws RequestException
      * @throws Exception
      */
-    private function apiCall(string $action, array $data = [], int $timeout = 0): mixed
+    private function apiCall(string $action, array $data = []): mixed
     {
         $request = [
             'action' => $action,
@@ -354,7 +353,7 @@ class Laraparser
             'data' => $data
         ];
 
-        $response = Http::timeout($timeout)->post($this->host, $request)->throw();
+        $response = Http::timeout($this->timeout)->post($this->host, $request)->throw();
         if ($response->successful() && @$response->json()['success']) {
             return @$response->json()['data'] ?: true;
         } else {
